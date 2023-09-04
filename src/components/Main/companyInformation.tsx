@@ -5,9 +5,26 @@ import TextField from '@mui/material/TextField';
 
 
 
-const ComapnyInformationTextFields = () => {
+const ComapnyInformationTextFields = (props: any) => {
 
     const isError = false;
+    const [companyUEN, setCompanyUEN] = React.useState('')
+    const [companyName, setCompanyName] = React.useState('')
+
+    React.useEffect( () => {
+
+        props.setCompanyInformation({ companyUEN, companyName })
+
+    }, [companyUEN, companyName])
+
+    const handleCompanyUEN = (event:any) => {
+        setCompanyUEN(event.target.value)
+
+    }
+
+    const handleCompanyName = (event: any) => {
+        setCompanyName(event.target.value)
+    }
 
     return (
         <Box
@@ -30,12 +47,16 @@ const ComapnyInformationTextFields = () => {
                 id="outlined-error-helper-text-1"
                 label="Company UEN"
                 helperText={isError ? "Company UEN is required" : null}
+                value={companyUEN}
+                onChange={event => setCompanyUEN(event.target.value)}
             />
             <TextField
                 error={isError}
                 id="outlined-error-helper-text-2"
                 label="Company Name"
                 helperText={isError ? "Company Name is required" : null}
+                value={companyName}
+                onChange={event => setCompanyName(event.target.value)}
             />
         </Box>
     );

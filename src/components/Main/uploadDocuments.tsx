@@ -8,7 +8,14 @@ import Data from '@/components/constants/ListData.tsx'
 import BasicList from './basicList';
 
 
-const UploadDocumentsTextFeild = () => {
+const UploadDocumentsTextFeild = (props: any) => {
+
+    const [file, setFile] = React.useState(null)
+
+    React.useEffect(() => {
+        props.setDocumentInformation({file})
+    }, [file])
+
     return (
         <Box
             sx={{
@@ -21,7 +28,8 @@ const UploadDocumentsTextFeild = () => {
                 className={styles['upload-box']}
                 variant='outlined'
             >
-                <input accept='application/pdf' type='file' multiple style={{ display: 'none' }} />
+                {/* @ts-ignore */}
+                <input accept='application/pdf' type='file' multiple style={{ display: 'none' }} onChange={event => setFile(event.target.files[0])} />
                 <UploadFileIcon />
                 <Typography sx={{textAlign: 'center'}} ><span>Click to upload</span> or drag and drop Bank Statements</Typography>
             </Paper>

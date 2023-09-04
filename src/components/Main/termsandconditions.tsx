@@ -6,12 +6,18 @@ import Data from '@/components/constants/ListData.tsx'
 import BasicList from './basicList';
 
 
-const TermsAndConditionsFields = () => {
+const TermsAndConditionsFields = (props: any) => {
+
+    const [isChecked, setIsChecked] = React.useState(false)
+
+    React.useEffect(() => {
+        props.setTermsAndConditions({ isChecked })
+    }, [isChecked])
 
     return (
         <Box>
             <FormControlLabel
-                control={<Checkbox />}
+                control={<Checkbox onChange={event => setIsChecked(event.target.checked)} />}
                 label="By ticking, you are confirming that you have understood and are agreeing to the details mentioned:"
             />
             <BasicList listData={Data.TermsAndConditionsData} styleName='terms-and-conditions' />

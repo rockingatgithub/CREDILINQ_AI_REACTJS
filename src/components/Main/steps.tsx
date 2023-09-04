@@ -17,40 +17,54 @@ import TermsAndConditionsFields from './termsandconditions';
 const steps = [
     {
         label: 'Company Information',
-        component: <ComapnyInformationTextFields />
+        Component:  (props: any) => <ComapnyInformationTextFields { ...props } />
     },
     {
         label: 'Applicant Information',
-        component: <ApplicationInformationTextFields />
+        Component: (props: any) => <ApplicationInformationTextFields { ...props } />
     },
     {
         label: 'Upload Documents',
-        component: <UploadDocumentsTextFeild />
+        Component: (props: any) => <UploadDocumentsTextFeild { ...props } />
     },
     {
         label: 'Terms & Conditions',
-        component: <TermsAndConditionsFields />
+        Component: (props: any) => <TermsAndConditionsFields { ...props } />
     }
 ];
 
 const VerticalLinearStepper = () => {
-    const [activeStep, setActiveStep] = React.useState(0);
 
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
+    const [companyInformation, setCompanyInformation] = React.useState({})
+    const [applicationInformation, setApplicationInformation] = React.useState({})
+    const [documentInformation, setDocumentInformation] = React.useState({})
+    const [termsAndConditions, setTermsAndConditions] = React.useState({})
 
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
+    const stateArray = [
+        {
+            companyInformation, setCompanyInformation
+        },
+        {
+            applicationInformation, setApplicationInformation
+        },
+        {
+            documentInformation, setDocumentInformation
+        },
+        {
+            termsAndConditions, setTermsAndConditions
+        }
+    ]
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
+    React.useEffect(() => {
+
+        console.log("any state changed!", companyInformation, applicationInformation, documentInformation, termsAndConditions)
+
+    }, [companyInformation, applicationInformation, documentInformation, termsAndConditions])
+
 
     return (
         <Box>
-            <Stepper activeStep={activeStep}
+            <Stepper
                 orientation="vertical"
                 className={styles.stepper}
             >
@@ -71,20 +85,12 @@ const VerticalLinearStepper = () => {
                         </StepLabel>
                         <StepContent>
                             <Box sx={{ mb: 2 }}>
-                                {step.component}
+                                <step.Component { ...stateArray[index] } />
                             </Box>
                         </StepContent>
                     </Step>
                 ))}
             </Stepper>
-            {activeStep === steps.length && (
-                <Paper square elevation={0} sx={{ p: 3 }}>
-                    <Typography>All steps completed - you&apos;re finished</Typography>
-                    <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-                        Reset
-                    </Button>
-                </Paper>
-            )}
         </Box>
     );
 }
