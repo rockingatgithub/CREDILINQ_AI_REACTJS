@@ -1,5 +1,5 @@
 import Footer from "@/components/footer"
-import Form from "@/components/main";
+import Form from "@/components/Main/main";
 import Navbar from "@/components/navbar";
 
 const Main = (props:any) => {

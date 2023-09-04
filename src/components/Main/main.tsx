@@ -17,6 +17,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DoneIcon from '@mui/icons-material/Done';
 import { Checkbox, FormControlLabel } from '@mui/material';
+import styles from './main.module.css'
 
 const UploadDocumentsData = [
     "PDFs (not scanned copies) of company's operating bank current account(s) statements for the past 6 months.Example: If today is 04 Sep 23, then please upload bank statements from Mar 23 to Aug 23 (both months inclusive)",
@@ -40,23 +41,30 @@ const ComapnyInformationTextFields = () => {
         <Box
             component="div"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '48%' },
+                '& .MuiTextField-root': { m: 1, width: '48%',
+                '@media screen and (max-width: 675px)': {
+                    width: '100%',
+                  },
+                },
+                display: 'flex',
+                justifyContent: 'space-between',
+                '@media screen and (max-width: 675px)': {
+                    flexWrap: 'wrap',
+                  }
             }}
         >
-            <div>
-                <TextField
-                    error={isError}
-                    id="outlined-error-helper-text-1"
-                    label="Company UEN"
-                    helperText={isError ? "Company UEN is required" : null}
-                />
-                <TextField
-                    error={isError}
-                    id="outlined-error-helper-text-2"
-                    label="Company Name"
-                    helperText={isError ? "Company Name is required" : null}
-                />
-            </div>
+            <TextField
+                error={isError}
+                id="outlined-error-helper-text-1"
+                label="Company UEN"
+                helperText={isError ? "Company UEN is required" : null}
+            />
+            <TextField
+                error={isError}
+                id="outlined-error-helper-text-2"
+                label="Company Name"
+                helperText={isError ? "Company Name is required" : null}
+            />
         </Box>
     );
 }
@@ -74,13 +82,18 @@ const ApplicationInformationTextFields = () => {
         <Box
             component="div"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '48%' },
+                '& .MuiTextField-root': { width: '48%',
+                '@media screen and (max-width: 675px)': {
+                    width: '100%',
+                  },
+            },
             }}
         >
-            <div>
+            <div className={styles['input-box']} >
                 <TextField
                     error={isError}
                     id="outlined-error-helper-text-1"
+                    className={styles['name-input']}
                     label="Full Name"
                     helperText={isError ? "Full Name is required" : null}
                 />
@@ -91,7 +104,7 @@ const ApplicationInformationTextFields = () => {
                     helperText={isError ? "Position within company is required" : null}
                 />
             </div>
-            <div>
+            <div className={styles['input-box']} >
                 <TextField
                     error={isError}
                     id="outlined-error-helper-text-1"
@@ -105,7 +118,7 @@ const ApplicationInformationTextFields = () => {
                     helperText={isError ? "Email address is required" : null}
                 />
             </div>
-            <div>
+            <div className={styles['telphone-input']} >
                 <MuiTelInput
                     error={isError}
                     id="outlined-error-helper-text-1"
@@ -125,21 +138,17 @@ const UploadDocumentsTextFeild = () => {
                 display: 'flex',
                 justifyContent: 'space-between'
             }}
+            className={styles['document-box']}
         >
-            <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    width: '48%'
-                }}
+            <Paper
+                className={styles['upload-box']}
+                variant='outlined'
             >
                 <input accept='application/pdf' type='file' multiple style={{ display: 'none' }} />
                 <UploadFileIcon />
-                <Typography><span>Click to upload</span> or drag and drop Bank Statements</Typography>
-            </Box>
-            <BasicList listData={UploadDocumentsData} />
+                <Typography sx={{textAlign: 'center'}} ><span>Click to upload</span> or drag and drop Bank Statements</Typography>
+            </Paper>
+            <BasicList listData={UploadDocumentsData} styleName='document-instructions' />
         </Box>
     )
 }
@@ -148,12 +157,21 @@ const TermsAndConditionFields = () => {
 
     return (
         <Box>
-            <FormControlLabel 
-                control={<Checkbox />} 
+            <FormControlLabel
+                control={<Checkbox />}
                 label="By ticking, you are confirming that you have understood and are agreeing to the details mentioned:"
             />
-            <BasicList listData={TermsAndConditionsData} />
-            <Button> SUBMIT </Button>
+            <BasicList listData={TermsAndConditionsData} styleName='terms-and-conditions' />
+            <Button
+                variant="contained"
+                sx={{
+                    marginBottom: '16px',
+                    float: 'right'
+                }}
+            >
+                SUBMIT
+            </Button>
+
         </Box>
     )
 
@@ -197,10 +215,7 @@ function VerticalLinearStepper() {
         <Box>
             <Stepper activeStep={activeStep}
                 orientation="vertical"
-                sx={{
-                    width: '90%',
-                    margin: 'auto',
-                }}
+                className={styles.stepper}
             >
                 {steps.map((step, index) => (
                     <Step key={step.label} active={true}>
@@ -261,11 +276,9 @@ const Form = (props: any) => {
 
         <form>
             <Paper
-                sx={{
-                    width: '90%',
-                    margin: 'auto'
-                }}
-                elevation={3}>
+                elevation={3}
+                className={styles.main}
+            >
 
                 <VerticalLinearStepper />
 
@@ -278,13 +291,16 @@ const Form = (props: any) => {
 
 export default Form
 
-const BasicList = (props:any) => {
+const BasicList = (props: any) => {
     return (
-        <Box sx={{ width: '48%', bgcolor: 'background.paper' }}>
+        <Box 
+            sx={{ width: '48%', bgcolor: 'background.paper' }}
+            className={styles[props.styleName]}    
+        >
             <nav aria-label="main mailbox folders">
                 <List>
                     {
-                        props.listData.map( (data: string) =>
+                        props.listData.map((data: string) =>
                             <ListItem>
                                 <ListItemIcon>
                                     <DoneIcon />
