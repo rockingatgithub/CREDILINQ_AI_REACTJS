@@ -7,22 +7,41 @@ import TextField from '@mui/material/TextField';
 
 const ComapnyInformationTextFields = (props: any) => {
 
-    let isError = false;
     let isStepCompleted = false;
     const [companyUEN, setCompanyUEN] = React.useState('')
     const [companyName, setCompanyName] = React.useState('')
+    const [companyUENTouched, setCompanyUENTouched] = React.useState(false)
+    const [companyNameTouched, setCompanyNameTouched] = React.useState(false)
+    const [companyUENError, setCompanyUENError] = React.useState(false)
+    const [companyNameError, setCompanyNameError] = React.useState(false)
+
 
     React.useEffect( () => {
 
-        if (companyName.length >= 8 && companyUEN.length >= 8) {
+        if ((companyUENTouched && companyUEN.length >= 8) 
+            && (companyNameTouched && companyName.length >= 8)) {
             isStepCompleted = true
-        } else {
+        }
+        if (companyUENTouched && companyUEN.length < 8) {
+            setCompanyUENError(true)
             isStepCompleted = false
+        }
+        if (companyNameTouched && companyName.length < 8) {
+            setCompanyNameError(true)
+            isStepCompleted = false
+        }
+
+        if(companyName.length >= 8) {
+            setCompanyNameError(false)
+        }
+
+        if(companyUEN.length >= 8) {
+            setCompanyUENError(false)
         }
 
         props.setCompanyInformation({ companyUEN, companyName, isStepCompleted })
 
-    }, [companyUEN, companyName])
+    }, [companyUEN, companyName, companyNameTouched, companyUENTouched])
 
     return (
         <Box
@@ -41,20 +60,22 @@ const ComapnyInformationTextFields = (props: any) => {
             }}
         >
             <TextField
-                error={isError}
+                error={companyUENError}
                 id="outlined-error-helper-text-1"
                 label="Company UEN"
-                helperText={isError ? "Company UEN is required" : null}
+                helperText={companyUENError ? "Company UEN is required" : null}
                 value={companyUEN}
                 onChange={event => setCompanyUEN(event.target.value)}
+                onBlur={() => setCompanyUENTouched(true)}
             />
             <TextField
-                error={isError}
+                error={companyNameError}
                 id="outlined-error-helper-text-2"
                 label="Company Name"
-                helperText={isError ? "Company Name is required" : null}
+                helperText={companyNameError ? "Company Name is required" : null}
                 value={companyName}
                 onChange={event => setCompanyName(event.target.value)}
+                onBlur={() => setCompanyNameTouched(true)}
             />
         </Box>
     );
