@@ -36,6 +36,7 @@ const TermsAndConditionsFields = (props: any) => {
                     float: 'right'
                 }}
                 onClick={props.submitHandler}
+                disabled={props.allStepsCompleted}
             >
                 SUBMIT
             </Button>

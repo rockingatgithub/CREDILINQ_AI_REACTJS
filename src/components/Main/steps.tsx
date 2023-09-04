@@ -36,6 +36,7 @@ const VerticalLinearStepper = () => {
     const [applicationInformation, setApplicationInformation] = React.useState({})
     const [documentInformation, setDocumentInformation] = React.useState({})
     const [termsAndConditions, setTermsAndConditions] = React.useState({})
+    const [allStepsCompleted, setAllStepsCompleted] = React.useState(false)
 
     const submitHandler = async () => {
 
@@ -48,7 +49,6 @@ const VerticalLinearStepper = () => {
             }
         })
         const parsedResponse = await response.json()
-        console.log("the data", parsedResponse)
         if(response.status === 200) {
             if(parsedResponse.verified){
                 alert("form verified")
@@ -67,14 +67,14 @@ const VerticalLinearStepper = () => {
             info: documentInformation, setDocumentInformation
         },
         {
-            info: termsAndConditions, setTermsAndConditions, submitHandler
+            info: termsAndConditions, setTermsAndConditions, submitHandler, allStepsCompleted
         }
     ]
 
     React.useEffect(() => {
-
-        console.log("any state changed!", companyInformation, applicationInformation, documentInformation, termsAndConditions)
-
+        // @ts-ignore
+        const areAllStepsCompleted = stateArray.every( steps => steps.info.isStepCompleted )
+        setAllStepsCompleted(!areAllStepsCompleted)
 
     }, [companyInformation, applicationInformation, documentInformation, termsAndConditions])
 

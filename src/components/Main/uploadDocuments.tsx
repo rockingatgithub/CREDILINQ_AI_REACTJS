@@ -22,6 +22,24 @@ const UploadDocumentsTextFeild = (props: any) => {
         props.setDocumentInformation({file, isStepCompleted})
     }, [file])
 
+    const importData = () => {
+        let input = document.createElement('input');
+        input.type = 'file';
+        input.onchange = _ => {
+            // @ts-ignore
+            let files = Array.from(input.files);
+            // @ts-ignore
+            setFile(files[0]);
+        };
+        input.click();
+      }
+
+      const importDragData = (event: any) => {
+        event.preventDefault()
+        // @ts-ignore
+        setFile("item drop", event.dataTransfer.files[0])
+      }
+
     return (
         <Box
             sx={{
@@ -33,6 +51,10 @@ const UploadDocumentsTextFeild = (props: any) => {
             <Paper
                 className={styles['upload-box']}
                 variant='outlined'
+                onClick={importData}
+                onDrop={importDragData}
+                onDragOver={event => event.preventDefault()}
+                
             >
                 {/* @ts-ignore */}
                 <input accept='application/pdf' type='file' multiple style={{ display: 'none' }} onChange={event => setFile(event.target.files[0])} />
