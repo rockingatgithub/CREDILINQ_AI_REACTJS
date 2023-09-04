@@ -7,24 +7,22 @@ import TextField from '@mui/material/TextField';
 
 const ComapnyInformationTextFields = (props: any) => {
 
-    const isError = false;
+    let isError = false;
+    let isStepCompleted = false;
     const [companyUEN, setCompanyUEN] = React.useState('')
     const [companyName, setCompanyName] = React.useState('')
 
     React.useEffect( () => {
 
-        props.setCompanyInformation({ companyUEN, companyName })
+        if (companyName.length >= 8 && companyUEN.length >= 8) {
+            isStepCompleted = true
+        } else {
+            isStepCompleted = false
+        }
+
+        props.setCompanyInformation({ companyUEN, companyName, isStepCompleted })
 
     }, [companyUEN, companyName])
-
-    const handleCompanyUEN = (event:any) => {
-        setCompanyUEN(event.target.value)
-
-    }
-
-    const handleCompanyName = (event: any) => {
-        setCompanyName(event.target.value)
-    }
 
     return (
         <Box

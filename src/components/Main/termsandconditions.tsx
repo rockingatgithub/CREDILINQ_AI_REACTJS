@@ -8,10 +8,18 @@ import BasicList from './basicList';
 
 const TermsAndConditionsFields = (props: any) => {
 
+    let isStepCompleted = false
     const [isChecked, setIsChecked] = React.useState(false)
 
     React.useEffect(() => {
-        props.setTermsAndConditions({ isChecked })
+
+        if (isChecked) {
+            isStepCompleted = true
+        } else {
+            isStepCompleted = false
+        }
+
+        props.setTermsAndConditions({ isChecked, isStepCompleted })
     }, [isChecked])
 
     return (
@@ -27,6 +35,7 @@ const TermsAndConditionsFields = (props: any) => {
                     marginBottom: '16px',
                     float: 'right'
                 }}
+                onClick={props.submitHandler}
             >
                 SUBMIT
             </Button>

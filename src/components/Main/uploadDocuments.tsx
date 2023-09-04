@@ -10,10 +10,16 @@ import BasicList from './basicList';
 
 const UploadDocumentsTextFeild = (props: any) => {
 
+    let isStepCompleted = false
     const [file, setFile] = React.useState(null)
 
     React.useEffect(() => {
-        props.setDocumentInformation({file})
+        if(file) {
+            isStepCompleted = true
+        } else {
+            isStepCompleted = false
+        }
+        props.setDocumentInformation({file, isStepCompleted})
     }, [file])
 
     return (

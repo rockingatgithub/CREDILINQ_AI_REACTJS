@@ -4,9 +4,6 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import styles from './main.module.css'
 import ComapnyInformationTextFields from './companyInformation';
 import ApplicationInformationTextFields from './applicationInformation';
@@ -40,24 +37,44 @@ const VerticalLinearStepper = () => {
     const [documentInformation, setDocumentInformation] = React.useState({})
     const [termsAndConditions, setTermsAndConditions] = React.useState({})
 
+    const submitHandler = async () => {
+
+        const obj = {companyInformation, applicationInformation, documentInformation, termsAndConditions}
+        const response = await fetch('http://localhost:8000', {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const parsedResponse = await response.json()
+        console.log("the data", parsedResponse)
+        if(response.status === 200) {
+            if(parsedResponse.verified){
+                alert("form verified")
+            }
+        }
+    }
+
     const stateArray = [
         {
-            companyInformation, setCompanyInformation
+            info: companyInformation, setCompanyInformation,
         },
         {
-            applicationInformation, setApplicationInformation
+            info: applicationInformation, setApplicationInformation
         },
         {
-            documentInformation, setDocumentInformation
+            info: documentInformation, setDocumentInformation
         },
         {
-            termsAndConditions, setTermsAndConditions
+            info: termsAndConditions, setTermsAndConditions, submitHandler
         }
     ]
 
     React.useEffect(() => {
 
         console.log("any state changed!", companyInformation, applicationInformation, documentInformation, termsAndConditions)
+
 
     }, [companyInformation, applicationInformation, documentInformation, termsAndConditions])
 
@@ -70,7 +87,12 @@ const VerticalLinearStepper = () => {
             >
                 {steps.map((step, index) => (
                     <Step key={step.label} active={true}>
-                        <StepLabel>
+                        <StepLabel sx={{
+                            '& .MuiSvgIcon-root': {
+                                // @ts-ignore
+                                color: stateArray[index]?.info?.isStepCompleted ? '#509050' : '#1976d2'
+                            }
+                        }} >
                             <Box
                                 sx={{
                                     background: 'rgb(96, 26, 121)',

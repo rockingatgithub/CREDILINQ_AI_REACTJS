@@ -8,16 +8,30 @@ import styles from './main.module.css'
 
 const ApplicationInformationTextFields = (props: any) => {
 
-    const isError = false
+    let isError = false
+    let isStepCompleted = false
     const [fullName, setFullName] = React.useState('')
     const [position, setPosition] = React.useState('')
     const [email, setEmail] = React.useState('')
     const [emailConfirmation, setEmailConfirmation] = React.useState('')
     const [mobileNumber, setMobileNumber] = React.useState('')
 
+    
+
     React.useEffect( () => {
 
-        props.setApplicationInformation({ fullName, position, email, emailConfirmation, mobileNumber })
+        if (fullName.length >= 8 
+            && position.length >= 8
+            && email.length >= 8
+            && emailConfirmation === email
+            && mobileNumber.length >= 8
+            ) {
+            isStepCompleted = true
+        } else {
+            isStepCompleted = false
+        }
+
+        props.setApplicationInformation({ fullName, position, email, emailConfirmation, mobileNumber, isStepCompleted })
 
     }, [fullName, position, email, emailConfirmation, mobileNumber])
 
