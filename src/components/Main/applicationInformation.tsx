@@ -122,7 +122,7 @@ const ApplicationInformationTextFields = (props: any) => {
                     error={isPositionError}
                     id="outlined-error-helper-text-2"
                     label="Position within company"
-                    helperText={isPositionError ? "Position within company is required, and length must be more than 8 characters" : null}
+                    helperText={isPositionError ? "Position within company is required, and length must be equal or more than 8 characters" : null}
                     value={position}
                     onChange={event=> setPosition(event.target.value)}
                     onBlur={() => setPositionTouched(true)}
@@ -132,7 +132,7 @@ const ApplicationInformationTextFields = (props: any) => {
                 <TextField
                     error={isEmailError}
                     id="outlined-error-helper-text-1"
-                    label="Email address, and length must be more than 8 characters"
+                    label="Email address, and length must be equal or more than 8 characters"
                     helperText={EmailAddressHelperText}
                     value={email}
                     onChange={event=> setEmail(event.target.value)}
@@ -153,7 +153,7 @@ const ApplicationInformationTextFields = (props: any) => {
                     error={isMobileError}
                     id="outlined-error-helper-text-1"
                     label="Mobile Number"
-                    helperText={isMobileError ? "Phone is required, and length must be more than 8 characters" : null}
+                    helperText={isMobileError ? "Phone is required, and length must be equal or more than 8 characters" : null}
                     value={mobileNumber}
                     onChange={value => setMobileNumber(value)}
                     onBlur={() => setMobileTouched(true)}
