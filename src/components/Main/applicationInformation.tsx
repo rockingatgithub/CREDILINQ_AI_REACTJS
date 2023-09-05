@@ -92,7 +92,7 @@ const ApplicationInformationTextFields = (props: any) => {
     ])
 
     const EmailAddressHelperText = <span>
-        <span style={{ display: 'block' }} >{isEmailError ? "Email address is required" : null}</span>
+        <span style={{ display: 'block' }} >{isEmailError ? "Email address is required, and length must be more than 8 characters" : null}</span>
         <span> The report will be delivered on this email address </span>
     </span>
 
@@ -113,7 +113,7 @@ const ApplicationInformationTextFields = (props: any) => {
                     id="outlined-error-helper-text-1"
                     className={styles['name-input']}
                     label="Full Name"
-                    helperText={isFullNameError ? "Full Name is required" : null}
+                    helperText={isFullNameError ? "Full Name is required, and length must be more than 8 characters" : null}
                     value={fullName}
                     onChange={event=> setFullName(event.target.value)}
                     onBlur={() => setFullNameTouched(true)}
@@ -122,7 +122,7 @@ const ApplicationInformationTextFields = (props: any) => {
                     error={isPositionError}
                     id="outlined-error-helper-text-2"
                     label="Position within company"
-                    helperText={isPositionError ? "Position within company is required" : null}
+                    helperText={isPositionError ? "Position within company is required, and length must be more than 8 characters" : null}
                     value={position}
                     onChange={event=> setPosition(event.target.value)}
                     onBlur={() => setPositionTouched(true)}
@@ -132,7 +132,7 @@ const ApplicationInformationTextFields = (props: any) => {
                 <TextField
                     error={isEmailError}
                     id="outlined-error-helper-text-1"
-                    label="Email address"
+                    label="Email address, and length must be more than 8 characters"
                     helperText={EmailAddressHelperText}
                     value={email}
                     onChange={event=> setEmail(event.target.value)}
@@ -142,7 +142,7 @@ const ApplicationInformationTextFields = (props: any) => {
                     error={isConfirmEmailError}
                     id="outlined-error-helper-text-2"
                     label="Re-enter email address"
-                    helperText={isConfirmEmailError ? "Email address is required" : null}
+                    helperText={isConfirmEmailError ? "Confirm email must match email filed value" : null}
                     value={emailConfirmation}
                     onChange={event=> setEmailConfirmation(event.target.value)}
                     onBlur={() => setemailConfirmationTouched(true)}
@@ -153,7 +153,7 @@ const ApplicationInformationTextFields = (props: any) => {
                     error={isMobileError}
                     id="outlined-error-helper-text-1"
                     label="Mobile Number"
-                    helperText={isMobileError ? "Email address is required" : null}
+                    helperText={isMobileError ? "Phone is required, and length must be more than 8 characters" : null}
                     value={mobileNumber}
                     onChange={value => setMobileNumber(value)}
                     onBlur={() => setMobileTouched(true)}

@@ -64,7 +64,7 @@ const ComapnyInformationTextFields = (props: any) => {
                 error={companyUENError}
                 id="outlined-error-helper-text-1"
                 label="Company UEN"
-                helperText={companyUENError ? "Company UEN is required" : null}
+                helperText={companyUENError ? "Company UEN is required, and length must be more than 8 characters" : null}
                 value={companyUEN}
                 onChange={event => setCompanyUEN(event.target.value)}
                 onBlur={() => setCompanyUENTouched(true)}
@@ -73,7 +73,7 @@ const ComapnyInformationTextFields = (props: any) => {
                 error={companyNameError}
                 id="outlined-error-helper-text-2"
                 label="Company Name"
-                helperText={companyNameError ? "Company Name is required" : null}
+                helperText={companyNameError ? "Company Name is required, and length must be more than 8 characters" : null}
                 value={companyName}
                 onChange={event => setCompanyName(event.target.value)}
                 onBlur={() => setCompanyNameTouched(true)}
