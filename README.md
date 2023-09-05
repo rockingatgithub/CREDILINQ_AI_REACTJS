@@ -44,8 +44,8 @@ Open [http://localhost:3000/main](http://localhost:3000/main) with your browser 
 
 To learn more about my projects, take a look at the following resources:
 
-- [GitHub Profile link](https://github.com/rockingatgithub) - learn about Next.js features and API.
-- [LinkedIn](https://www.linkedin.com/in/sudhendra-singh-168831130/) - an interactive Next.js tutorial.
+- [GitHub Profile link](https://github.com/rockingatgithub) - Checkout my GitHub profile.
+- [LinkedIn](https://www.linkedin.com/in/sudhendra-singh-168831130/) - Checkout my LinkedIn page.
 
 Your feedback and contributions are welcome!
 
