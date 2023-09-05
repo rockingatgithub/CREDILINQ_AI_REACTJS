@@ -2,6 +2,10 @@
 
 The project is to validate data provided for several fields based on company, application and documents.
 
+# Deployed Link
+
+Check the project live at:- [https://credilinq-ai-reactjs-2o9qb50n9-rockingatgithub.vercel.app/main](https://credilinq-ai-reactjs-2o9qb50n9-rockingatgithub.vercel.app/main)
+
 # Tech stack
 
 - NextJS
