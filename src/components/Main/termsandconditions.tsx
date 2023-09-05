@@ -5,12 +5,14 @@ import { Checkbox, FormControlLabel } from '@mui/material';
 import Data from '@/components/constants/ListData.tsx'
 import BasicList from './basicList';
 
+// ==================== The terms and conditions section which shows checkbox and terms and conditions list ===============
 
 const TermsAndConditionsFields = (props: any) => {
 
     let isStepCompleted = false
     const [isChecked, setIsChecked] = React.useState(false)
 
+    //  ================= The validation is added to check if checkbox is checked or not ======================
     React.useEffect(() => {
 
         if (isChecked) {

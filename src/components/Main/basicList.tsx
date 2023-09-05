@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import DoneIcon from '@mui/icons-material/Done';
 import styles from './main.module.css'
 
+// ===================== This component renders list for upload documents and terms and conditions. ==================
 const BasicList = (props: any) => {
     return (
         <Box 

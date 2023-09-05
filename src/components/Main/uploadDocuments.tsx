@@ -7,12 +7,14 @@ import styles from './main.module.css'
 import Data from '@/components/constants/ListData.tsx'
 import BasicList from './basicList';
 
+//  ======================== Upload document section of the form =====================
 
 const UploadDocumentsTextFeild = (props: any) => {
 
     let isStepCompleted = false
     const [file, setFile] = React.useState(null)
 
+    // ========================== The validation is added to check if a file has been added or not ===================
     React.useEffect(() => {
         if(file) {
             isStepCompleted = true
@@ -22,6 +24,7 @@ const UploadDocumentsTextFeild = (props: any) => {
         props.setDocumentInformation({file, isStepCompleted})
     }, [file])
 
+    // ================= Below two methods support file upload using click as well as file drag and upload feature ===========
     const importData = () => {
         let input = document.createElement('input');
         input.type = 'file';

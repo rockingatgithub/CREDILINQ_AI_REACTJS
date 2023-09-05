@@ -1,5 +1,7 @@
 import { Box } from "@mui/material";
 
+// ================== The footer section is to show a blank gradient box ==================
+
 const Footer = (props:any) => {
     return <>
         <Box

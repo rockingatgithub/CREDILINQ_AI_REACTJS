@@ -10,6 +10,8 @@ import ApplicationInformationTextFields from './applicationInformation';
 import UploadDocumentsTextFeild from './uploadDocuments';
 import TermsAndConditionsFields from './termsandconditions';
 
+// ===================== The main stepper component to combine all the steps together along with dynamically 
+// rendering component in the steps. ==================
 
 const steps = [
     {
@@ -38,6 +40,7 @@ const VerticalLinearStepper = () => {
     const [termsAndConditions, setTermsAndConditions] = React.useState({})
     const [allStepsCompleted, setAllStepsCompleted] = React.useState(false)
 
+    // ============== Sending form data to backend ==================
     const submitHandler = async () => {
 
         const obj = {companyInformation, applicationInformation, documentInformation, termsAndConditions}
@@ -56,6 +59,7 @@ const VerticalLinearStepper = () => {
         }
     }
 
+    // =============== stateArray is to share states with different components ===================
     const stateArray = [
         {
             info: companyInformation, setCompanyInformation,

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 
-
+// ================= This component contains fields for company details. ================================
 
 const ComapnyInformationTextFields = (props: any) => {
 
@@ -16,6 +16,7 @@ const ComapnyInformationTextFields = (props: any) => {
     const [companyNameError, setCompanyNameError] = React.useState(false)
 
 
+    // ================== Below useEffect is for validating company UEN and name fileds ======================
     React.useEffect( () => {
 
         if ((companyUENTouched && companyUEN.length >= 8) 

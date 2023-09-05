@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { MuiTelInput } from 'mui-tel-input';
 import styles from './main.module.css'
 
-
+// ================ This is the application section of the page, which has some input fields =======================
 
 const ApplicationInformationTextFields = (props: any) => {
 
@@ -25,6 +25,7 @@ const ApplicationInformationTextFields = (props: any) => {
     const [isConfirmEmailError, setIsConfirmEmailError] = React.useState(false)
     const [isMobileError, setIsMobileError] = React.useState(false)
 
+    // ====================== The useEffect is validating is all the fields are set or not ========================
     React.useEffect( () => {
 
         if ((fullNameTouched && fullName.length >= 8) 
@@ -35,6 +36,9 @@ const ApplicationInformationTextFields = (props: any) => {
         ) {
             isStepCompleted = true
         }
+
+        // ====================== Below conditions are to check if there's error in any field =============
+
         if (fullNameTouched && fullName.length < 8) {
             setIsFullNameError(true)
             isStepCompleted = false
@@ -58,6 +62,8 @@ const ApplicationInformationTextFields = (props: any) => {
             setIsMobileError(true)
             isStepCompleted = false
         }
+
+        // ===================== Below fields are to reset error if they follow the validation rules =================== 
 
         if(fullName.length >= 8) {
             setIsFullNameError(false)

@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material"
 import Image from "next/image"
 import logo from '@/public/images/crediLinqAI.svg'
 
+// ==================== The navbar component ==============================
 const Navbar = (props: any) => {
 
     return <Box
