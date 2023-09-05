@@ -18,7 +18,7 @@ const BasicList = (props: any) => {
                 <List>
                     {
                         props.listData.map((data: string) =>
-                            <ListItem>
+                            <ListItem key={data} >
                                 <ListItemIcon>
                                     <DoneIcon />
                                 </ListItemIcon>
