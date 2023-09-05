@@ -49,6 +49,10 @@
     width: 100%;
 }
 
+.document-instructions {
+    width: 48%;
+  }
+
 @media screen and (max-width: 576px) {
     
     .main {

@@ -13,7 +13,7 @@ const ApplicationInformationTextFields = (props: any) => {
     const [position, setPosition] = React.useState('')
     const [email, setEmail] = React.useState('')
     const [emailConfirmation, setEmailConfirmation] = React.useState('')
-    const [mobileNumber, setMobileNumber] = React.useState('')
+    const [mobileNumber, setMobileNumber] = React.useState('+65')
     const [fullNameTouched, setFullNameTouched] = React.useState(false)
     const [positionTouched, setPositionTouched] = React.useState(false)
     const [emailTouched, setEmailTouched] = React.useState(false)
@@ -157,6 +157,7 @@ const ApplicationInformationTextFields = (props: any) => {
                     value={mobileNumber}
                     onChange={value => setMobileNumber(value)}
                     onBlur={() => setMobileTouched(true)}
+                    
                 />
             </div>
         </Box>

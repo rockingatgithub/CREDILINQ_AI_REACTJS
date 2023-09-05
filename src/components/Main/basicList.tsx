@@ -11,7 +11,7 @@ import styles from './main.module.css'
 const BasicList = (props: any) => {
     return (
         <Box 
-            sx={{ width: '48%', bgcolor: 'background.paper' }}
+            sx={{ bgcolor: 'background.paper' }}
             className={styles[props.styleName]}    
         >
             <nav aria-label="main mailbox folders">
