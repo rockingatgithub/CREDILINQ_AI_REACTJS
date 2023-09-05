@@ -14,7 +14,7 @@ The project is to validate data provided for several fields based on company, ap
 
 - Then clone the backend repository from [https://github.com/rockingatgithub/CREDILINQ_AI_SERVER](https://github.com/rockingatgithub/CREDILINQ_AI_SERVER)
 
-- Note:- The project can start without frontend too. However, sending API calls wouldn't work without a backend.
+- Note:- The project can start without backend too. However, sending API calls wouldn't work without a backend.
 
 - Run the below command:
 
