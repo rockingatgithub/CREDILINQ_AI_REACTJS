@@ -92,7 +92,7 @@ const ApplicationInformationTextFields = (props: any) => {
     ])
 
     const EmailAddressHelperText = <span>
-        <span style={{ display: 'block' }} >{isEmailError ? "Email address is required, and length must be more than 8 characters" : null}</span>
+        <span style={{ display: 'block' }} >{isEmailError ? "Email address is required, and length must be equal or more than 8 characters" : null}</span>
         <span> The report will be delivered on this email address </span>
     </span>
 
@@ -132,7 +132,7 @@ const ApplicationInformationTextFields = (props: any) => {
                 <TextField
                     error={isEmailError}
                     id="outlined-error-helper-text-1"
-                    label="Email address, and length must be equal or more than 8 characters"
+                    label="Email address"
                     helperText={EmailAddressHelperText}
                     value={email}
                     onChange={event=> setEmail(event.target.value)}
