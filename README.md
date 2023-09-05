@@ -16,7 +16,7 @@ The project is to validate data provided for several fields based on company, ap
 
 - Note:- The project can start without backend too. However, sending API calls wouldn't work without a backend.
 
-- Run the below command:
+# Installation:
 
 ```bash
 
@@ -28,7 +28,7 @@ pnpm install
 
 ```
 
-- Run the development server:
+# Run the development server:
 
 ```bash
 npm run dev
