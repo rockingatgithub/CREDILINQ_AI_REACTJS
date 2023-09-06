@@ -54,8 +54,6 @@ const VerticalLinearStepper = () => {
             body.append( key, obj[key] )
         })
 
-        console.log("the final body", body)
-
         const response = await fetch('http://localhost:8000', {
             method: 'POST',
             body,

@@ -4,7 +4,7 @@ The project is to validate data provided for several fields based on company, ap
 
 ### Deployed Link
 
-Check the project live at:- [https://credilinq-ai-reactjs-dar6wdsqg-rockingatgithub.vercel.app/main](https://credilinq-ai-reactjs-dar6wdsqg-rockingatgithub.vercel.app/main)
+Check the project live at:- [https://credilinq-ai-reactjs-f6l67feit-rockingatgithub.vercel.app/main](https://credilinq-ai-reactjs-f6l67feit-rockingatgithub.vercel.app/main)
 
 ### Tech stack
 
