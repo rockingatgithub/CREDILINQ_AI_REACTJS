@@ -43,12 +43,24 @@ const VerticalLinearStepper = () => {
     // ============== Sending form data to backend ==================
     const submitHandler = async () => {
 
-        const obj = {companyInformation, applicationInformation, documentInformation, termsAndConditions}
+        const obj = {...companyInformation, ...applicationInformation, ...termsAndConditions}
+
+        const body = new FormData()
+        // @ts-ignore
+        body.append('file', documentInformation.file)
+        const Keys = Object.keys(obj)
+        Keys.forEach(key => {
+            // @ts-ignore
+            body.append( key, obj[key] )
+        })
+
+        console.log("the final body", body)
+
         const response = await fetch('http://localhost:8000', {
             method: 'POST',
-            body: JSON.stringify(obj),
+            body,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
             }
         })
         const parsedResponse = await response.json()
